@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEEKEE Portable</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="brand-mark">S</div>
+          <div>
+            <div class="brand-name">SEEKEE</div>
+            <div class="brand-sub">Portable</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">Dashboard</button>
+          <button class="nav-item">Search</button>
+          <button class="nav-item">AI Tools</button>
+          <button class="nav-item">News</button>
+          <button class="nav-item">Learning</button>
+        </nav>
+
+        <div class="mini-card">
+          <div class="mini-label">Quick access</div>
+          <ul>
+            <li>Research</li>
+            <li>Translate</li>
+            <li>Summaries</li>
+            <li>Files</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="search-box-wrap">
+            <span class="search-icon">⌕</span>
+            <input id="queryInput" type="text" placeholder="Search the web or ask for help..." />
+          </div>
+          <div class="top-actions">
+            <button class="ghost-btn" id="searchBtn">Search</button>
+            <button class="primary-btn" id="askBtn">Ask AI</button>
+          </div>
+        </header>
+
+        <section class="hero-grid">
+          <div class="hero-card hero-main">
+            <div class="eyebrow">AI workspace</div>
+            <h1>Search, learn, create faster.</h1>
+            <p>
+              A portable Windows-style assistant for everyday research, writing,
+              study, and productivity.
+            </p>
+            <div class="chip-row">
+              <span>Research</span>
+              <span>Summaries</span>
+              <span>Images</span>
+              <span>Files</span>
+            </div>
+          </div>
+
+          <div class="hero-card hero-metrics">
+            <div class="metric">
+              <span>Queries</span>
+              <strong>245</strong>
+            </div>
+            <div class="metric">
+              <span>Saved docs</span>
+              <strong>18</strong>
+            </div>
+            <div class="metric">
+              <span>AI tasks</span>
+              <strong>32</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel results-panel">
+            <div class="panel-header">
+              <h2>Results</h2>
+              <span class="muted" id="resultCount">0 results</span>
+            </div>
+            <div id="resultsList" class="results-list"></div>
+          </div>
+
+          <div class="panel assistant-panel">
+            <div class="panel-header">
+              <h2>AI Assistant</h2>
+              <span class="status-dot">Online</span>
+            </div>
+
+            <div id="assistantOutput" class="assistant-output">
+              <p class="assistant-welcome">
+                Ask anything and I’ll suggest quick research, summaries, and next steps.
+              </p>
+            </div>
+
+            <div class="suggestions">
+              <button class="suggestion">Summarize this topic</button>
+              <button class="suggestion">Generate a study plan</button>
+              <button class="suggestion">Find web sources</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
