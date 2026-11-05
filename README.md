@@ -1,25 +1,42 @@
-# Seekee Portable for Windows
+# Seekee Windows Portable
 
-A portable Windows desktop-style app inspired by SEEKEE, built as a local web app that runs without installation.
+Una versión portable de una app tipo SEEKEE para Windows, como interfaz local de búsqueda e IA.
 
-## What it includes
-- Smart search bar with quick actions
-- AI-style assistant panel
-- News / productivity / research widgets
-- Mobile-like but desktop friendly layout
-- Works by opening `index.html` directly in a browser
-- No backend required
+## Requisitos
+- Windows 10 o 11
+- Python 3
 
-## Run it on Windows
-Option 1: double click `start.bat`
+## Cómo usarla
+1. Descarga este repositorio o extrae el ZIP.
+2. Abre la carpeta.
+3. Haz doble clic en `start.bat`.
+4. La app se abrirá en tu navegador local.
 
-Option 2: open `index.html` in your browser
+## Si no funciona
+Si el lanzador falla, abre una terminal dentro de la carpeta y ejecuta:
 
-## File overview
-- `index.html` — user interface
-- `style.css` — visual design
-- `script.js` — app behavior
-- `start.bat` — Windows launcher
+```bat
+python server.py
+```
 
-## Notes
-This is a portable prototype inspired by the overall idea of SEEKEE, designed as a local-first search and productivity assistant for Windows.
+O:
+
+```bat
+py server.py
+```
+
+Luego abre la URL que aparezca en la consola, normalmente:
+
+```text
+http://127.0.0.1:8000/
+```
+
+## Archivos principales
+- `index.html` — interfaz principal
+- `style.css` — estilos visuales
+- `script.js` — comportamiento de búsqueda y asistente IA
+- `server.py` — servidor local para Windows
+- `start.bat` — lanzador para abrir la app
+
+## Nota
+Es un prototipo local, portable y funcional visualmente, sin conexión a un servicio de IA real ni contenido externo.

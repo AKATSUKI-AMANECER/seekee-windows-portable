@@ -1,95 +1,121 @@
 const defaultQueries = [
-  'best AI productivity tools',
-  'Windows portable app design',
-  'research workflow for students',
-  'how to summarize a long document',
-  'latest AI news updates'
+  'mejores herramientas de IA para productividad',
+  'diseño de app portable para Windows',
+  'cómo resumir un documento largo',
+  'flujo de trabajo para investigación',
+  'últimas noticias sobre IA'
 ];
 
-const generateResults = (query) => {
-  const clean = query.trim();
+const resultBank = {
+  'mejores herramientas de IA para productividad': [
+    {
+      title: 'Herramientas IA para productividad',
+      snippet: 'Busca asistentes para escribir, resumir, transformar documentos y automatizar tareas repetitivas en el trabajo diario.',
+      tag: 'Productividad'
+    },
+    {
+      title: 'Workflow de IA útil para equipos',
+      snippet: 'Usa la IA para resumir conversaciones, extraer ideas clave y convertir notas en tareas ejecutables.',
+      tag: 'Trabajo'
+    }
+  ],
+  'diseño de app portable para Windows': [
+    {
+      title: 'Diseño de aplicación portable para Windows',
+      snippet: 'Una app portable suele tener una sola carpeta, sin instalación, y ejecutarse con un lanzador local para abrir el navegador.',
+      tag: 'Diseño'
+    }
+  ],
+  'cómo resumir un documento largo': [
+    {
+      title: 'Guía para resumir documentos',
+      snippet: 'Identifica idea principal, argumentos clave y conclusión; luego convierte el contenido en bullets claros.',
+      tag: 'Aprender'
+    }
+  ]
+};
+
+function generateResults(query) {
+  const clean = (query || '').trim();
   if (!clean) {
-    return [];
+    return [
+      {
+        title: 'Sin consulta aún',
+        snippet: 'Escribe una idea para crear resultados relevantes.',
+        tag: 'Inicio'
+      }
+    ];
   }
 
-  const keywords = clean.split(/\s+/).slice(0, 3).join(' ');
+  const key = clean.toLowerCase();
+  if (resultBank[key]) return resultBank[key];
 
   return [
     {
-      title: `Search results for “${clean}”`,
-      snippet: `Find reliable sources, tutorials, and summaries related to ${clean}. This portable app focuses on discovery, productivity, research, and learning workflows.`,
-      tag: 'Research'
+      title: `Resultados para “${clean}”`,
+      snippet: `Busca fuentes confiables, extrae ideas clave y conviértelas en un resumen sencillo con pasos claros de acción.`,
+      tag: 'Investigación'
     },
     {
-      title: `AI summary ideas for ${keywords}`,
-      snippet: `Use a short overview, bullet points, and key takeaways to condense your research into a useful knowledge snapshot.`,
-      tag: 'AI Tools'
+      title: `Resumen rápido de ${clean}`,
+      snippet: `Primero define el objetivo, luego recolecta 3 fuentes y extrae el punto central, ejemplos y conclusiones relevantes.`,
+      tag: 'IA'
     },
     {
-      title: `Practical quick actions for ${keywords}`,
-      snippet: `Compare sources, collect notes, and turn your query into a summary, outline, or study checklist with a clear next-step plan.`,
-      tag: 'Productivity'
+      title: `Siguiente paso para ${clean}`,
+      snippet: `Convierte la información en notas, tabla de puntos clave o plan de trabajo para facilitar la comprensión y ejecución.`,
+      tag: 'Productividad'
     }
   ];
-};
+}
 
-const buildAssistantReply = (query) => {
-  const clean = query.trim() || 'your topic';
-  const suggestion = clean.length > 40 ? `${clean.slice(0, 40)}...` : clean;
-
+function buildAssistantReply(query) {
+  const clean = (query || '').trim() || 'tu tema';
   return `
-    <p><strong>Query:</strong> ${suggestion}</p>
-    <p>Here’s a good workflow:</p>
-    <p>1. Search the main idea and collect 3 trusted sources.</p>
-    <p>2. Extract the strongest facts, findings, and examples.</p>
-    <p>3. Turn them into a short summary, checklist, or research note.</p>
-    <p>4. Save the result for later reading or sharing.</p>
+    <p><strong>Consulta:</strong> ${clean}</p>
+    <p>Este flujo funciona bien:</p>
+    <p>1. Define el objetivo y busca 3 fuentes confiables.</p>
+    <p>2. Extrae hechos clave, ejemplos y conclusiones.</p>
+    <p>3. Convierte la información en un resumen breve o un plan de acción.</p>
+    <p>4. Guarda el resultado y compártelo cuando lo necesites.</p>
   `;
-};
+}
 
-const renderResults = (results) => {
+function renderResults(results) {
   const container = document.getElementById('resultsList');
   const count = document.getElementById('resultCount');
 
   if (!results.length) {
-    container.innerHTML = '<div class="result-item"><p class="result-snippet">Type a search phrase to see recommendations.</p></div>';
-    count.textContent = '0 results';
+    container.innerHTML = '<div class="result-item"><p class="result-snippet">Aún no hay resultados.</p></div>';
+    count.textContent = '0 resultados';
     return;
   }
 
-  container.innerHTML = results
-    .map(
-      (item) => `
-        <article class="result-item">
-          <h3 class="result-title">${item.title}</h3>
-          <p class="result-snippet">${item.snippet}</p>
-          <span class="result-tag">${item.tag}</span>
-        </article>
-      `
-    )
-    .join('');
+  container.innerHTML = results.map(item => `
+    <article class="result-item">
+      <h3 class="result-title">${item.title}</h3>
+      <p class="result-snippet">${item.snippet}</p>
+      <span class="result-tag">${item.tag}</span>
+    </article>
+  `).join('');
 
-  count.textContent = `${results.length} results`;
-};
+  count.textContent = `${results.length} resultados`;
+}
 
-const updateAssistant = (query) => {
+function updateAssistant(query) {
   const output = document.getElementById('assistantOutput');
   output.innerHTML = buildAssistantReply(query);
-};
+}
 
-const doSearch = () => {
+function doSearch() {
   const input = document.getElementById('queryInput');
   const query = input.value.trim();
   const results = generateResults(query || defaultQueries[0]);
   renderResults(results);
   updateAssistant(query || defaultQueries[0]);
+}
 
-  if (!query) {
-    input.value = defaultQueries[0];
-  }
-};
-
-const bindActions = () => {
+function bindActions() {
   document.getElementById('searchBtn').addEventListener('click', doSearch);
   document.getElementById('askBtn').addEventListener('click', doSearch);
 
@@ -106,7 +132,7 @@ const bindActions = () => {
       doSearch();
     });
   });
-};
+}
 
 window.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('queryInput');
@@ -115,11 +141,3 @@ window.addEventListener('DOMContentLoaded', () => {
   updateAssistant(defaultQueries[0]);
   bindActions();
 });
-
-window.addEventListener('beforeunload', () => {
-  document.getElementById('queryInput').blur();
-});
-
-if (typeof window !== 'undefined') {
-  window.SEKEE_PORTABLE = true;
-}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SEEKEE Portable</title>
+    <title>Seekee Portable</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -19,19 +19,19 @@
 
         <nav class="nav">
           <button class="nav-item active">Dashboard</button>
-          <button class="nav-item">Search</button>
-          <button class="nav-item">AI Tools</button>
-          <button class="nav-item">News</button>
-          <button class="nav-item">Learning</button>
+          <button class="nav-item">Buscar</button>
+          <button class="nav-item">IA</button>
+          <button class="nav-item">Noticias</button>
+          <button class="nav-item">Aprender</button>
         </nav>
 
         <div class="mini-card">
-          <div class="mini-label">Quick access</div>
+          <div class="mini-label">Acceso rápido</div>
           <ul>
-            <li>Research</li>
-            <li>Translate</li>
-            <li>Summaries</li>
-            <li>Files</li>
+            <li>Investigación</li>
+            <li>Traducción</li>
+            <li>Resúmenes</li>
+            <li>Archivos</li>
           </ul>
         </div>
       </aside>
@@ -40,10 +40,10 @@
         <header class="topbar">
           <div class="search-box-wrap">
             <span class="search-icon">⌕</span>
-            <input id="queryInput" type="text" placeholder="Search the web or ask for help..." />
+            <input id="queryInput" type="text" placeholder="Busca algo o escribe una idea..." />
           </div>
           <div class="top-actions">
-            <button class="ghost-btn" id="searchBtn">Search</button>
+            <button class="ghost-btn" id="searchBtn">Buscar</button>
             <button class="primary-btn" id="askBtn">Ask AI</button>
           </div>
         </header>
@@ -51,30 +51,29 @@
         <section class="hero-grid">
           <div class="hero-card hero-main">
             <div class="eyebrow">AI workspace</div>
-            <h1>Search, learn, create faster.</h1>
+            <h1>Busca, aprende y crea más rápido.</h1>
             <p>
-              A portable Windows-style assistant for everyday research, writing,
-              study, and productivity.
+              Una app portátil para Windows inspirada en SEEKEE, con buscador, asistente IA y panel de productividad local.
             </p>
             <div class="chip-row">
-              <span>Research</span>
-              <span>Summaries</span>
-              <span>Images</span>
-              <span>Files</span>
+              <span>Investigación</span>
+              <span>Resúmenes</span>
+              <span>Imágenes</span>
+              <span>Documentos</span>
             </div>
           </div>
 
           <div class="hero-card hero-metrics">
             <div class="metric">
-              <span>Queries</span>
+              <span>Búsquedas</span>
               <strong>245</strong>
             </div>
             <div class="metric">
-              <span>Saved docs</span>
+              <span>Docs</span>
               <strong>18</strong>
             </div>
             <div class="metric">
-              <span>AI tasks</span>
+              <span>Tareas IA</span>
               <strong>32</strong>
             </div>
           </div>
@@ -83,28 +82,28 @@
         <section class="content-grid">
           <div class="panel results-panel">
             <div class="panel-header">
-              <h2>Results</h2>
-              <span class="muted" id="resultCount">0 results</span>
+              <h2>Resultados</h2>
+              <span class="muted" id="resultCount">0 resultados</span>
             </div>
             <div id="resultsList" class="results-list"></div>
           </div>
 
           <div class="panel assistant-panel">
             <div class="panel-header">
-              <h2>AI Assistant</h2>
-              <span class="status-dot">Online</span>
+              <h2>Asistente IA</h2>
+              <span class="status-dot">En línea</span>
             </div>
 
             <div id="assistantOutput" class="assistant-output">
               <p class="assistant-welcome">
-                Ask anything and I’ll suggest quick research, summaries, and next steps.
+                Escribe una idea y te mostraré una forma rápida de investigar, resumir y avanzar.
               </p>
             </div>
 
             <div class="suggestions">
-              <button class="suggestion">Summarize this topic</button>
-              <button class="suggestion">Generate a study plan</button>
-              <button class="suggestion">Find web sources</button>
+              <button class="suggestion">Resumir tema</button>
+              <button class="suggestion">Generar plan de estudio</button>
+              <button class="suggestion">Buscar fuentes</button>
             </div>
           </div>
         </section>
